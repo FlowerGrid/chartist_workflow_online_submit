@@ -96,11 +96,11 @@ def online_submit(final_file, lyric_file, link_entry, lang_combo_box, submit_win
         sections = file.read().split("\n\n")
 
     # Fill out each input field with the corresponding section
-    for i, section in enumerate(sections[1:]):
+    for i, section in enumerate(sections[2:]):
         lines = section.split('\n')
         section_id = re.search(r'#(\d+)', lines[0]).group(1)
 
-        section = ''.join(line for line in lines[2:])
+        section = ''.join(line for line in lines[1:])
         input_field = driver.find_element("id", f"coda_{section_id}")
         pyperclip.copy(section)
         input_field.send_keys(pyperclip.paste())
