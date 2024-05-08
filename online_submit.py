@@ -13,7 +13,7 @@ def create_submit_window(final_file, lyric_file):
 
     submit_window = Tk()
     submit_window.geometry(f"{win_width}x{win_height}")
-    submit_window.title("Submit to Multitracks Online")
+    submit_window.title("Submit to Back Office")
     submit_window.grid_columnconfigure(0, weight=1)
 
 
@@ -28,7 +28,7 @@ def create_submit_window(final_file, lyric_file):
     main_frame.place(relx=0.5, rely=0.5, anchor=CENTER)
     main_frame.grid_columnconfigure((0, 1, 2), weight=1, uniform='columns')
 
-    # Multitracks song link
+    # Song link
     link_label = Label(main_frame, text='Song Link', padx=5, pady=5)
     link_label.grid(row=0, column=0, sticky='e')
     link_entry = Entry(main_frame, width=30, borderwidth=2)
