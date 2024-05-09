@@ -59,7 +59,6 @@ def create_submit_window(final_file, lyric_file):
 
 
 def online_submit(final_file, lyric_file, song_link, lang, lyric_checkbox_bool, submit_window):
-    print('===got here===')
     # Initialize Selenium WebDriver (assuming Chrome)
     driver = webdriver.Chrome()
 
@@ -68,7 +67,7 @@ def online_submit(final_file, lyric_file, song_link, lang, lyric_checkbox_bool, 
 
     # Wait for user to login
     try:
-        wait = WebDriverWait(driver, 30)
+        wait = WebDriverWait(driver, 60)
         wait.until(EC.visibility_of_element_located((By.CLASS_NAME, "chartbuilder-input")))
 
         # Read and parse the text file to extract sections
@@ -99,7 +98,7 @@ def online_submit(final_file, lyric_file, song_link, lang, lyric_checkbox_bool, 
     #submit_button.click()
 
     # Close the browser
-    driver.quit()
+    #driver.quit()
 
     submit_window.destroy()
 
