@@ -94,8 +94,8 @@ def online_submit(final_file, lyric_file, song_link, lang, lyric_checkbox_bool, 
 
 
     # Submit the form
-    save_button = driver.find_element("id", "btnSave").click()
-    
+    driver.find_element("id", "btnSave").click()
+
     # Close the browser
     #driver.quit()
 
