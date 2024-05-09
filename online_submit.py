@@ -11,6 +11,10 @@ import tkinter.filedialog as filedialog
 import tkinter.ttk as ttk
 
 def create_submit_window(final_file, lyric_file):
+    # Initialize webdriver so it stays open until tkinter window closed
+    driver = webdriver.Chrome()
+
+
     win_width = 500
     win_height = 150
 
@@ -50,7 +54,7 @@ def create_submit_window(final_file, lyric_file):
     lyric_checkbox.grid(row=1, column =2, sticky='w')
 
     submit_button = Button(main_frame, text='Submit', command=lambda: online_submit(
-        final_file, lyric_file, link_entry.get(), lang_combo_box.get(), lyric_checkbox_bool.get(), submit_window
+        driver, final_file, lyric_file, link_entry.get(), lang_combo_box.get(), lyric_checkbox_bool.get(), submit_window
         ))
     
     submit_button.grid(row=2, column=1)
@@ -58,9 +62,9 @@ def create_submit_window(final_file, lyric_file):
     submit_window.mainloop()
 
 
-def online_submit(final_file, lyric_file, song_link, lang, lyric_checkbox_bool, submit_window):
+def online_submit(driver, final_file, lyric_file, song_link, lang, lyric_checkbox_bool, submit_window):
     # Initialize Selenium WebDriver (assuming Chrome)
-    driver = webdriver.Chrome()
+    #driver = webdriver.Chrome()
 
     # Load the submission page
     driver.get(song_link)
