@@ -66,9 +66,6 @@ def online_submit(final_file, lyric_file, song_link, lang, lyric_checkbox_bool, 
     # Load the submission page
     driver.get(song_link)
 
-    username = driver.find_element('id', 'username')
-    username.send_keys('did it work?')
-
     # Wait for user to login
     try:
         wait = WebDriverWait(driver, 30)
