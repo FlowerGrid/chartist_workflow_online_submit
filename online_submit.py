@@ -60,7 +60,7 @@ def create_submit_window(final_file, lyric_file):
     submit_button.grid(row=2, column=1)
 
     submit_window.mainloop()
-
+    driver.quit()
 
 def online_submit(driver, final_file, lyric_file, song_link, lang, lyric_checkbox_bool, submit_window):
     # Initialize Selenium WebDriver (assuming Chrome)
@@ -73,6 +73,9 @@ def online_submit(driver, final_file, lyric_file, song_link, lang, lyric_checkbo
     try:
         wait = WebDriverWait(driver, 60)
         wait.until(EC.visibility_of_element_located((By.CLASS_NAME, "chartbuilder-input")))
+
+        if lyric_checkbox_bool == 1:
+            lyrics(lyric_file, driver, lang)        
 
         # Read and parse the text file to extract sections
         with open(final_file, "r") as file:
@@ -87,10 +90,6 @@ def online_submit(driver, final_file, lyric_file, song_link, lang, lyric_checkbo
             input_field = driver.find_element("id", f"coda_{section_id}")
             pyperclip.copy(section)
             input_field.send_keys(pyperclip.paste())
-
-
-        if lyric_checkbox_bool == 1:
-            lyrics(lyric_file, driver, lang)
 
     except TimeoutException:
         print('Timeout')
