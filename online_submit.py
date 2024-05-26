@@ -10,7 +10,7 @@ from tkinter import *
 import tkinter.filedialog as filedialog
 import tkinter.ttk as ttk
 
-def create_submit_window(final_file, lyric_file):
+def create_submit_window(tk_root, final_file, lyric_file):
     # Initialize webdriver so it stays open until tkinter window closed
     driver = webdriver.Chrome()
 
@@ -18,7 +18,7 @@ def create_submit_window(final_file, lyric_file):
     win_width = 500
     win_height = 150
 
-    submit_window = Tk()
+    submit_window = Toplevel(tk_root)
     submit_window.geometry(f"{win_width}x{win_height}")
     submit_window.title("Submit to Back Office")
     submit_window.grid_columnconfigure(0, weight=1)
@@ -121,6 +121,7 @@ def lyrics(lyric_file, driver, lang):
 
 
 if __name__ == '__main__':
+    tk_root = Tk()
     project_path = filedialog.askdirectory(
     title='Select project location',
     message="Please choose the project's parent folder"
@@ -129,4 +130,4 @@ if __name__ == '__main__':
     final_file = os.path.join(project_path, 'Final', f'converted_{title}.txt')
     lyric_file = os.path.join(project_path, 'Final', f'{title} LYRICS.txt')
 
-    create_submit_window(final_file, lyric_file)
+    create_submit_window(tk_root, final_file, lyric_file)
