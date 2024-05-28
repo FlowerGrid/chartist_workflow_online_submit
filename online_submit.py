@@ -57,7 +57,7 @@ def create_submit_window(tk_root, final_file, lyric_file):
 
     submit_button = Button(main_frame, text='Submit', command=lambda: online_submit(
         driver, final_file, lyric_file, link_entry.get(), lyric_checkbox_bool.get(), submit_window
-        ))
+        )) # no longer doing combobox.get()
     
     submit_button.grid(row=2, column=1)
 
