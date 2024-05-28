@@ -109,7 +109,7 @@ def lyrics(lyric_file, driver): # took out lang variable, shouldn't need it anym
         lyric_id = re.search(r'#(\d+)', lines[0]).group(1)
 
         lyric = '\n'.join(line for line in lines[1:])
-        l_input_field = driver.find_element_by_xpath(f"//textarea[@name='chordPro_{lyric_id}']")
+        l_input_field = driver.find_element(By.XPATH, f"//textarea[contains(@id, 'chordPro') and contains(@id, '{lyric_id}')]")
         pyperclip.copy(lyric)
         l_input_field.send_keys(pyperclip.paste())
 
